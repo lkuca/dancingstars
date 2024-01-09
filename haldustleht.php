@@ -28,6 +28,18 @@ if(isset($_REQUEST["kustuta"])){
     $kask->bind_param("i", $_REQUEST["kustuta"]);
     $kask->execute();
 }
+//komentaaridw lisamine
+if(isset($_REQUEST["komment"])) {
+    if(isset($_REQUEST["uuskomment"])&& !empty($_REQUEST["uuskomment"])){
+    global $yhendus;
+    $kask=$yhendus->prepare("Update tantsud SET kommentaarid=CONCAT(kommentaarid, ?)where id=? ");
+    $kommentplus= $_REQUEST["uuskomment"]. "\n";
+    $kask->bind_param("si", $kommentplus, $_REQUEST["komment"]);
+    $kask->execute();
+    header("Location: $_SERVER[PHP_SELF]");
+    $yhendus->close();
+}
+    }
 function isAdmin(){
     return isset($_SESSION['onAdmin']) && $_SESSION['onAdmin'];
 }
@@ -89,6 +101,7 @@ while($kask->fetch()){
     echo "<td>".$punktd."</td>";
     echo "<td>".$paev."</td>";
     echo "<td>".$komment."</td>";
+    echo"<td>".$komment=nl2br(htmlspecialchars($komment))."</td>";
     echo"<td>
 <form action='?'>
 <input type='hidden' value='$id' name='komment'>
