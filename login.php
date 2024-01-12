@@ -24,17 +24,15 @@ if (!empty($_POST['login']) && !empty($_POST['pass'])) {
 
         if($onAdmin==1){
             header('Location: adminleht.php');
+            echo '<script>window.location.href = "adminleht.php";</script>';
         }
         else{
-            echo "kasutaja $login või parool $kryp on vale";
-            $yhendus->close();
+            echo '<script>window.location.href ="haldustleht.php";</script>';
         }
-        header('Location: haldustleht.php');
-        $yhendus->close();
-        exit();
     } else {
         echo "kasutaja $login või parool $kryp on vale";
         $yhendus->close();
+        exit();
     }
 }
 ?>

@@ -73,7 +73,7 @@ if(isset($_REQUEST["kustuta"])){
 </heder>
 <h1>Tantsud tähtedega</h1>
 <h2>Punktide lisamine</h2>
-<h3><a href="haldustleht.php">kasutajaLeht</a></h3>
+<h3><a href="haldustleht.php">Vaata kasutajaLeht</a></h3>
 <table>
     <tr>
         <th>Tantsupaari nimi</th>

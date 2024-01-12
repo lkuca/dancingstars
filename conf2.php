@@ -6,3 +6,6 @@ $andmebaas='d123175_andmebaas';
 $yhendus=new mysqli($sererinimi,$kasutaja,$parool,$andmebaas);
 $yhendus->set_charset('UTF8');
 ?>
+
+
+if(isset($_SESSION[!'kasutaja']) && isset($_SESSION[!'onAdmin'])) {
